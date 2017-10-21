@@ -200,6 +200,7 @@ config DEFAULT_IOSCHED
 	default "deadline" if DEFAULT_DEADLINE
 	default "fifo" if DEFAULT_FIFO
 	default "fiops" if DEFAULT_FIOPS
+	default "maple" if DEFAULT_MAPLE
 	default "noop" if DEFAULT_NOOP
 	default "row" if DEFAULT_ROW	
 	default "sio" if DEFAULT_SIO
