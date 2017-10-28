@@ -346,7 +346,7 @@ endif
 export COMPILER
 endif
 
-# Look for make include files relative to root of kernel src7879
+# Look for make include files relative to root of kernel src
 MAKEFLAGS += --include-dir=$(srctree)
 
 # We need some generic definitions (do not try to remake the file).
