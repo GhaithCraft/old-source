@@ -65,10 +65,6 @@ config IOSCHED_FIOPS
           IOPS equally among all processes in the system. It's mainly for
           Flash based storage.
 
-config IOSCHED_MAPLE
-	tristate "Maple I/O scheduler"
-	default y
-
 config IOSCHED_NOOP
 	bool
 	default y
@@ -188,9 +184,6 @@ choice
 	config DEFAULT_ZEN
 		bool "ZEN" if IOSCHED_ZEN=y
 
-	config DEFAULT_MAPLE
-		bool "Maple" if IOSCHED_MAPLE=y
-
 endchoice
 
 config DEFAULT_IOSCHED
@@ -200,7 +193,6 @@ config DEFAULT_IOSCHED
 	default "deadline" if DEFAULT_DEADLINE
 	default "fifo" if DEFAULT_FIFO
 	default "fiops" if DEFAULT_FIOPS
-	default "maple" if DEFAULT_MAPLE
 	default "noop" if DEFAULT_NOOP
 	default "row" if DEFAULT_ROW	
 	default "sio" if DEFAULT_SIO
