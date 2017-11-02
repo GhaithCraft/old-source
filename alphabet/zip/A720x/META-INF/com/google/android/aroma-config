@@ -346,9 +346,9 @@ if (prop("alphabetkernel-restore.prop","install")=="0") then
 			"alphabetKernel Advanced Options",
 			"",
 			"tcp.prop",
-			"tcp", "Select your TCP Congestion Algorithm (Internet) (stock=bic)", "", "group",
+			"tcp", "Select your TCP Congestion Algorithm (Internet) (stock=westwood)", "", "group",
 			"balia", "balia", "", "select",
-			"bic", "bic", "", "select.selected",
+			"bic", "bic", "", "select",
 			"cubic", "cubic", "", "select",
 			"dctcp", "dctcp", "", "select",
 			"htcp", "htcp", "", "select",
@@ -361,7 +361,7 @@ if (prop("alphabetkernel-restore.prop","install")=="0") then
 			"scalable", "scalable", "", "select",
 			"vegas", "vegas", "", "select",
 			"veno", "veno", "", "select",
-			"westwood", "westwood", "", "select",
+			"westwood", "westwood", "", "select.selected",
 			"wvegas", "wvegas", "", "select",
 			"yeah", "yeah", "", "select"
 		);
