@@ -56,8 +56,5 @@ config EXYNOS_HOTPLUG_GOVERNOR
 config EXYNOS_PM_DVS
 	bool "Enable Exynos dynamic voltage setting"
 	default n
-	
-config STATE_NOTIFIER
-    bool "State Notifier"
 
 endif #SOC_SAMSUNG

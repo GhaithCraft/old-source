@@ -774,7 +774,7 @@ static int suspend_prepare(struct regulator_dev *rdev, suspend_state_t state)
 static void print_constraints(struct regulator_dev *rdev)
 {
 	struct regulation_constraints *constraints = rdev->constraints;
-	char buf[160] = "";
+	char buf[80] = "";
 	int count = 0;
 	int ret;
 
@@ -1722,6 +1722,8 @@ static void regulator_ena_gpio_free(struct regulator_dev *rdev)
 				gpiod_put(pin->gpiod);
 				list_del(&pin->list);
 				kfree(pin);
+				rdev->ena_pin = NULL;
+				return;
 			} else {
 				pin->request_count--;
 			}

@@ -898,9 +898,13 @@ static ssize_t show_cpufreq_min_limit(struct kobject *kobj,
 	return nsize;
 }
 
-static void save_cpufreq_min_limit(int input)
+static ssize_t store_cpufreq_min_limit(struct kobject *kobj, struct attribute *attr,
+					const char *buf, size_t count)
 {
-	int cluster1_input = input, cluster0_input;
+	int cluster1_input, cluster0_input;
+
+	if (!sscanf(buf, "%8d", &cluster1_input))
+		return -EINVAL;
 
 	if (cluster1_input >= (int)freq_min[CL_ONE]) {
 #ifdef CONFIG_SCHED_HMP
@@ -942,17 +946,6 @@ static void save_cpufreq_min_limit(int input)
 		pm_qos_update_request(&core_min_qos[CL_ONE], cluster1_input);
 	if (pm_qos_request_active(&core_min_qos[CL_ZERO]))
 		pm_qos_update_request(&core_min_qos[CL_ZERO], cluster0_input);
-}
-
-static ssize_t store_cpufreq_min_limit(struct kobject *kobj, struct attribute *attr,
-					const char *buf, size_t count)
-{
-	int cluster1_input;
-
-	if (!sscanf(buf, "%8d", &cluster1_input))
-		return -EINVAL;
-
-	save_cpufreq_min_limit(cluster1_input);
 
 	return count;
 }
@@ -984,9 +977,13 @@ static ssize_t show_cpufreq_max_limit(struct kobject *kobj,
 	return nsize;
 }
 
-static void save_cpufreq_max_limit(int input)
+static ssize_t store_cpufreq_max_limit(struct kobject *kobj, struct attribute *attr,
+					const char *buf, size_t count)
 {
-	int cluster1_input = input, cluster0_input;
+	int cluster1_input, cluster0_input;
+
+	if (!sscanf(buf, "%8d", &cluster1_input))
+		return -EINVAL;
 
 	if (cluster1_input >= (int)freq_min[CL_ONE]) {
 		if (cluster1_hotplugged) {
@@ -1022,17 +1019,6 @@ static void save_cpufreq_max_limit(int input)
 		pm_qos_update_request(&core_max_qos[CL_ONE], cluster1_input);
 	if (pm_qos_request_active(&core_max_qos[CL_ZERO]))
 		pm_qos_update_request(&core_max_qos[CL_ZERO], cluster0_input);
-}
-
-static ssize_t store_cpufreq_max_limit(struct kobject *kobj, struct attribute *attr,
-					const char *buf, size_t count)
-{
-	int cluster1_input;
-
-	if (!sscanf(buf, "%8d", &cluster1_input))
-		return -EINVAL;
-
-	save_cpufreq_max_limit(cluster1_input);
 
 	return count;
 }
@@ -1757,10 +1743,6 @@ static int exynos_cluster0_min_qos_handler(struct notifier_block *b,
 
 #if defined(CONFIG_CPU_FREQ_GOV_INTERACTIVE)
 	threshold_freq = cpufreq_interactive_get_hispeed_freq(0);
-	if (!threshold_freq)
-		threshold_freq = 1000000;	/* 1.0GHz */
-#elif defined(CONFIG_CPU_FREQ_GOV_CAFACTIVE)
-	threshold_freq = cpufreq_cafactive_get_hispeed_freq(0);
 	if (!threshold_freq)
 		threshold_freq = 1000000;	/* 1.0GHz */
 #else
