@@ -6,7 +6,7 @@
 # DO NOT USE ANY PORTION OF THIS
 # CODE WITHOUT HIS PERMISSION!!
 #
-# Modified by Siddhant Naik to support alphabet Kernel
+# Modified by GhaithCraft to support alphabet Kernel
 # -------------------------------
 
 # ROM INFO
@@ -16,7 +16,7 @@ ini_set("rom_name", "Alphabet Kernel");
 ini_set("rom_version", "1.0");
 ini_set("rom_author", "GhaithCraft");
 ini_set("rom_device", "SM-A720x");
-ini_set("rom_date", "October 11th, 2017");
+ini_set("rom_date", "October 30th, 2017");
 
 # SETUP
 # -----
@@ -24,7 +24,6 @@ writetmpfile("patch.prop","install=0");
 writetmpfile("okm.prop","install=0");
 writetmpfile("busybox.prop","install=0");
 writetmpfile("pwm.prop","install=0");
-writetmpfile("spectrum.prop","install=0");
 writetmpfile("magisk.prop","install=0");
 writetmpfile("supersu.prop","install=0");
 writetmpfile("selinux.prop","install=0");
@@ -210,10 +209,7 @@ if (prop("alphabetkernel-restore.prop","install")=="0") then
 		"Install Apps",
 		"",
 		"apps.prop",
-		"Install the Spectrum?", "", 2,
-		"Yes", "Also installs Control App if oxygen Kernel Manager is not selected", 1,
-		"No", "", 0,
-		"Install oxygen Kernel Manager?", "", 2,
+		"Install Kernel Manager?", "", 2,
 		"Yes", "Recommended for tweaking kernel features", 1,
 		"No", "", 0,
 		"Do you want to install Busybox?", "", 2,
@@ -222,10 +218,9 @@ if (prop("alphabetkernel-restore.prop","install")=="0") then
 	);
 	if (prop("apps.prop","selected.1")=="1") then
 		writetmpfile("patch.prop","install=1");
-		writetmpfile("spectrum.prop","install=1");
 	endif;
 	if (prop("apps.prop","selected.2")=="1") then
-		writetmpfile("okm.prop","install=1");
+		writetmpfile("akm.prop","install=1");
 	endif;
 	if (prop("apps.prop","selected.3")=="1") then
 		writetmpfile("busybox.prop","install=1");
@@ -289,8 +284,7 @@ if (prop("alphabetkernel-restore.prop","install")=="0") then
 			"ondemand_x", "ondemand_x", "", "select",
 			"pegasusq", "pegasusq", "", "select",
 			"performance", "performance", "", "select",
-			"powersave", "powersave", "", "select",
-			"relaxed", "relaxed", "", "select",
+			"powersave", "powersave", "", "select",	
 			"smartassV2", "smartassV2", "", "select",
 			"smartmax", "smartmax", "", "select",
 			"smartmax_eps", "smartmax_eps", "", "select",
@@ -299,91 +293,9 @@ if (prop("alphabetkernel-restore.prop","install")=="0") then
 			"zzmoove", "zzmoove", "", "select"
 		);
 
-# ADVANCED PAGE 3 - MAX CPU RATE
-# ------------------------------------
-		form(
-			"alphabet KERNEL",
-			"alphabetKernel Advanced Options",
-			"",
-			"cpumax-big.prop",
-			"cpumax-big", "Select your max CPU freq (stock=1.6 Ghz)", "", "group",
-			"1690", "1.7 Ghz", "", "select",
-			"1586", "1.6 Ghz", "", "select.selected",
-			"1482", "1.5 Ghz", "", "select",
-			"1352", "1.4 Ghz", "", "select",
-			"1248", "1.3 Ghz", "", "select",
-			"1144", "1.2 Ghz", "", "select",
-			"1014", "1.1 Ghz", "", "select",
-			"902", "902 Mhz", "", "select",
-			"839", "839 Mhz", "", "select",
-			"757", "757 Mhz", "", "select",
-			"676", "676 Mhz", "", "select",
-			"546", "546 Mhz", "", "select",
-			"449", "449 Mhz", "", "select",
-			"324", "324 Mhz", "", "select"
-		);
 
-# ADVANCED PAGE 4 - MIN CPU RATE
-# ------------------------------------
-		form(
-			"alphabet KERNEL",
-			"alphabetKernel Advanced Options",
-			"",
-			"cpumin-big.prop",
-			"cpumin-big", "Select your min CPU freq (stock=324 Mhz)", "", "group",
-			"324", "324 Mhz", "", "select.selected",
-			"449", "449 Mhz", "", "select",
-			"546", "546 Mhz", "", "select",
-			"676", "676 Mhz", "", "select",
-			"757", "757 Mhz", "", "select",
-			"839", "839 Mhz", "", "select",
-			"902", "902 Mhz", "", "select",
-			"1014", "1.1 Ghz", "", "select",
-			"1144", "1.2 Ghz", "", "select",
-			"1248", "1.3 Ghz", "", "select",
-			"1352", "1.4 Ghz", "", "select",
-			"1482", "1.5 Ghz", "", "select",
-			"1586", "1.6 Ghz", "", "select",
-			"1690", "1.7 Ghz", "", "select"
-		);
 
-# ADVANCED PAGE 7 - MAX GPU RATE
-# ------------------------------
-		form(
-			"alphabet KERNEL",
-			"alphabetKernel Advanced Options",
-			"",
-			"gpumax.prop",
-			"gpumax", "Select your max GPU freq (stock=1001 Mhz)", "", "group",
-			"1146", "1 Ghz", "", "select",
-			"1001", "1001 Mhz", "", "select.selected",
-			"845", "845 Mhz", "", "select",
-			"728", "728 Mhz", "", "select",
-			"676", "676 Mhz", "", "select",
-			"545", "545 Mhz", "", "select",
-			"450", "450 Mhz", "", "select",
-			"343", "343 Mhz", "", "select"
-		);
-
-# ADVANCED PAGE 8 - MIN GPU RATE
-# ------------------------------
-		form(
-			"alphabet KERNEL",
-			"alphabetKernel Advanced Options",
-			"",
-			"gpumin.prop",
-			"gpumin", "Select your min GPU freq (stock=343 Mhz)", "", "group",
-			"343", "343 Mhz", "", "select.selected",
-			"450", "450 Mhz", "", "select",
-			"545", "545 Mhz", "", "select",
-			"676", "676 Mhz", "", "select",
-			"728", "728 Mhz", "", "select",
-			"845", "845 Mhz", "", "select",
-			"1001", "1001 Mhz", "", "select",
-			"1146", "1 Ghz", "", "select"
-		);
-
-# ADVANCED PAGE 9 - IO SCHEDULERS (INTERNAL)
+# ADVANCED PAGE 2 - IO SCHEDULERS (INTERNAL)
 # ------------------------------------------
 		form(
 			"alphabet KERNEL",
@@ -396,7 +308,6 @@ if (prop("alphabetkernel-restore.prop","install")=="0") then
 			"deadline", "deadline", "", "select",
 			"fifo", "fifo", "", "select",
 			"fiops", "fiops", "", "select",
-			"maple", "maple", "", "select",
 			"noop", "noop", "", "select",
 			"row", "row", "", "select",
 			"sio", "sio", "", "select",
@@ -406,7 +317,7 @@ if (prop("alphabetkernel-restore.prop","install")=="0") then
 			"zen", "zen", "", "select"
 		);
 
-# ADVANCED PAGE 10 - IO SCHEDULERS (EXTERNAL)
+# ADVANCED PAGE 3 - IO SCHEDULERS (EXTERNAL)
 # ------------------------------------------
 		form(
 			"alphabet KERNEL",
@@ -419,7 +330,6 @@ if (prop("alphabetkernel-restore.prop","install")=="0") then
 			"deadline", "deadline", "", "select",
 			"fifo", "fifo", "", "select",
 			"fiops", "fiops", "", "select",
-			"maple", "maple", "", "select",
 			"noop", "noop", "", "select",
 			"row", "row", "", "select",
 			"sio", "sio", "", "select",
@@ -429,16 +339,16 @@ if (prop("alphabetkernel-restore.prop","install")=="0") then
 			"zen", "zen", "", "select"
 		);
 
-# ADVANCED PAGE 11 - CONGESTORS
+# ADVANCED PAGE 4 - CONGESTORS
 # -----------------------------
 		form(
 			"alphabet KERNEL",
 			"alphabetKernel Advanced Options",
 			"",
 			"tcp.prop",
-			"tcp", "Select your TCP Congestion Algorithm (Internet) (stock=bic)", "", "group",
+			"tcp", "Select your TCP Congestion Algorithm (Internet) (stock=westwood)", "", "group",
 			"balia", "balia", "", "select",
-			"bic", "bic", "", "select.selected",
+			"bic", "bic", "", "select",
 			"cubic", "cubic", "", "select",
 			"dctcp", "dctcp", "", "select",
 			"htcp", "htcp", "", "select",
@@ -451,7 +361,7 @@ if (prop("alphabetkernel-restore.prop","install")=="0") then
 			"scalable", "scalable", "", "select",
 			"vegas", "vegas", "", "select",
 			"veno", "veno", "", "select",
-			"westwood", "westwood", "", "select",
+			"westwood", "westwood", "", "select.selected",
 			"wvegas", "wvegas", "", "select",
 			"yeah", "yeah", "", "select"
 		);
@@ -470,7 +380,7 @@ setvar(
 	);
 	
 viewbox(
-    "OXYEGN KERNEL",
+    "Alphabet KERNEL",
 	"\n\n\n\n\n\n"+
     "Press Next to Continue the Installation...",
     ""

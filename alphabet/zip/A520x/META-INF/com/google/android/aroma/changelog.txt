@@ -1,3 +1,1 @@
--Fixed Spectrum
 -Fixed Aroma Advanced Options failed to set
--Enabled front flash(hardware) for devices which support it

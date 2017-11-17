@@ -70,34 +70,19 @@ ui_print(" ");
 
 set_progress(0.40);
 
-# INSTALL OKM
+# INSTALL AKM
 # ---------------
-if file_getprop("/tmp/aroma/okm.prop","install") == "1"
+if file_getprop("/tmp/aroma/akm.prop","install") == "1"
 then
-	ui_print("@Installing Oxygen Kernel Manager App");
-	delete_recursive("/system/app/com.siddhant.okm*");
-	delete_recursive("/system/priv-app/com.siddhant.okm*");
-	delete_recursive("/data/app/com.siddhant.okm*");
-	delete_recursive("/data/data/com.siddhant.okm*");
-	package_extract_dir("alphabetkernel/apps/com.siddhant.okm-2", "/data/app/com.siddhant.okm-2");
+	ui_print("@Installing Alphabet Kernel Manager App");
+	delete_recursive("/system/app/com.Ghaith.akm*");
+	delete_recursive("/system/priv-app/com.Ghaith.akm*");
+	delete_recursive("/data/app/com.Ghaith.akm*");
+	delete_recursive("/data/data/com.Ghaith.akm*");
+	package_extract_dir("alphabetkernel/apps/com.Ghaith.akm-2", "/data/app/com.Ghaith.akm-2");
 endif;
 
 set_progress(0.45);
-
-# INSTALL SPECTRUM FILES
-# ----------------------
-if file_getprop("/tmp/aroma/spectrum.prop","install") == "1"
-then
-	ui_print("@Installing Spectrum Profiles");
-	package_extract_dir("alphabetkernel/spectrum", "/data/media/0/Spectrum");
-	set_perm_recursive(0, 0, 0777, 0777, "/data/media/0/Spectrum");
-	if file_getprop("/tmp/aroma/okm.prop","install") == "0"
-	then
-		ui_print("@Installing Spectrum Control App");
-		delete_recursive("/data/app/org.frap129.spectrum-*");
-		package_extract_dir("alphabetkernel/apps/org.frap129.spectrum-1", "/data/app/org.frap129.spectrum-1");
-	endif;
-endif;
 
 set_progress(0.49);
 
