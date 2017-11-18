@@ -11,6 +11,7 @@ import /init.${ro.zygote}.rc
 import /init.rilcommon.rc
 import /init.container.rc
 import /init.fac.rc
+import /init.services.rc
 
 on early-init
     # Set init and its forked children's oom_adj.
@@ -1709,15 +1710,3 @@ on property:service.vpnclientd.enable=0
 
 on property:sys.sf.restart=1
     restart surfaceflinger
- 
-# start init.d support
-service kernel-init /sbin/kernel-init.sh
-	class main
-	user root
-	oneshot
-
-# Call Knox Reset
-service knox-daemon /system/bin/sh /init.knox.sh
-    class main
-    user root
-    oneshot

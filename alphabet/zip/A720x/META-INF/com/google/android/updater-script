@@ -1,5 +1,5 @@
 # -------------------------------
-# ALPHABET KERNEL AROMA INSTALLER v1.0
+# ALPHABET KERNEL AROMA INSTALLER v2.0
 # aroma-config portion
 #
 # Created by djb77 from XDA 
@@ -90,6 +90,7 @@ set_progress(0.49);
 # -----------
 ui_print(" ");
 ui_print("@Setting System Permissions");
+set_metadata("/system/etc/sysconfig/google.xml", "uid", 0, "gid", 0, "mode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 set_metadata_recursive("/system/etc/init.d", "uid", 0, "gid", 2000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 set_metadata("/system/vendor/lib/libsecure_storage.so", "uid", 0, "gid", 0, "mode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 set_metadata_recursive("/system/xbin", "uid", 0, "gid", 2000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");

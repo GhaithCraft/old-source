@@ -1,5 +1,5 @@
 # -------------------------------
-# alphabet KERNEL AROMA INSTALLER v1.0
+# alphabet KERNEL AROMA INSTALLER v2.0
 # aroma-config portion
 #
 # Created by djb77 from XDA 
@@ -13,15 +13,15 @@
 # --------
 ini_set("force_colorspace","rgba");
 ini_set("rom_name", "Alphabet Kernel");
-ini_set("rom_version", "1.0");
+ini_set("rom_version", "2.0");
 ini_set("rom_author", "GhaithCraft");
-ini_set("rom_device", "SM-A720x");
-ini_set("rom_date", "October 30th, 2017");
+ini_set("rom_device", "SM-A520x");
+ini_set("rom_date", "november 12th, 2017");
 
 # SETUP
 # -----
 writetmpfile("patch.prop","install=0");
-writetmpfile("okm.prop","install=0");
+writetmpfile("akm.prop","install=0");
 writetmpfile("busybox.prop","install=0");
 writetmpfile("pwm.prop","install=0");
 writetmpfile("magisk.prop","install=0");
@@ -284,8 +284,7 @@ if (prop("alphabetkernel-restore.prop","install")=="0") then
 			"ondemand_x", "ondemand_x", "", "select",
 			"pegasusq", "pegasusq", "", "select",
 			"performance", "performance", "", "select",
-			"powersave", "powersave", "", "select",
-			"relaxed", "relaxed", "", "select",
+			"powersave", "powersave", "", "select",	
 			"smartassV2", "smartassV2", "", "select",
 			"smartmax", "smartmax", "", "select",
 			"smartmax_eps", "smartmax_eps", "", "select",
@@ -304,11 +303,13 @@ if (prop("alphabetkernel-restore.prop","install")=="0") then
 			"",
 			"scheduler-internal.prop",
 			"scheduler-internal", "Select your IO Scheduler (Internal) (stock=cfq)", "", "group",
+			"bfq", "bfq", "", "select",
 			"cfq", "cfq", "", "select.selected",
 			"deadline", "deadline", "", "select",
 			"fifo", "fifo", "", "select",
 			"fiops", "fiops", "", "select",
 			"noop", "noop", "", "select",
+			"row", "row", "", "select",
 			"sio", "sio", "", "select",
 			"sioplus", "sioplus", "", "select",
 			"tripndroid", "tripndroid", "", "select",
@@ -329,7 +330,6 @@ if (prop("alphabetkernel-restore.prop","install")=="0") then
 			"deadline", "deadline", "", "select",
 			"fifo", "fifo", "", "select",
 			"fiops", "fiops", "", "select",
-			"maple", "maple", "", "select",
 			"noop", "noop", "", "select",
 			"row", "row", "", "select",
 			"sio", "sio", "", "select",
