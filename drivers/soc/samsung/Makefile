@@ -10,7 +10,6 @@ obj-$(CONFIG_ARCH_EXYNOS)	+= exynos-cpu_hotplug.o
 obj-$(CONFIG_EXYNOS_MCINFO)	+= exynos-mcinfo.o
 
 obj-$(CONFIG_ARCH_EXYNOS)	+= secmem.o
-obj-$(CONFIG_ARCH_EXYNOS)	+= exynos-smc.o
 
 # CAL
 obj-$(CONFIG_PWRCAL)            += pwrcal/
